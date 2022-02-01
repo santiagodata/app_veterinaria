@@ -1,0 +1,92 @@
+<h2>Generar pago Clientes</h2>
+<hr>
+<hr>
+<div class="row text-end">
+  <div class="col">
+    <button class="btn btn-success" routerLink="/proveedores">
+      <i class="far fa-hand-point-left"></i>
+      Regresar
+    </button>
+  </div>
+</div>
+
+<hr>
+<form autocomplete="off" [formGroup]="formUsuario" (ngSubmit)="guardar()">
+
+  <div>
+    <div class="mb-3">
+      <label for="cc" class="form-label">Cedula</label>
+      <input type="text"
+             class="form-control"
+             name="cc"
+             id="cc"
+             formControlName="cc"
+             [class.is-invalid]="ccNoValida">
+      <small *ngIf="ccNoValida" class="text-danger">
+        El campo cedula es obligatorio
+      </small>
+    </div>
+    <div class="mb-3">
+      <label for="nombres" class="form-label">Nombres</label>
+      <input type="text"
+             class="form-control"
+             name="nombres"
+             id="nombres"
+             formControlName="nombres"
+             [class.is-invalid]="nombresNoValido">
+      <small *ngIf="nombresNoValido" class="text-danger">
+        El campo nombres es obligatorio
+      </small>
+    </div>
+    <div class="mb-3">
+      <label for="apellidos" class="form-label">Apellidos</label>
+      <input type="text"
+             class="form-control"
+             name="apellidos"
+             id="apellidos"
+             formControlName="apellidos"
+             [class.is-invalid]="apellidosNoValidos">
+      <small *ngIf="apellidosNoValidos" class="text-danger">
+        El campo apellidos es obligatorio
+      </small>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo Electronico</label>
+      <input type="text"
+             class="form-control"
+             name="email"
+             id="email"
+             formControlName="email"
+             [class.is-invalid]="emailNoValido">
+      <small *ngIf="emailNoValido" class="text-danger">
+        El campo email no cumple con las caracteristicas de un correo
+      </small>
+    </div>
+    <div class="mb-3">
+      <label for="valor" class="form-label">Monto Pago</label>
+      <input type="number"
+             class="form-control"
+             name="valor"
+             id="valor"
+             formControlName="valor"
+             [class.is-invalid]="valorNoValido">
+      <small *ngIf="valorNoValido" class="text-danger">
+        Este campo es obligatorio
+      </small>
+    </div>
+  </div>
+  <div class="mb-3">
+    <button type="submit" class="btn btn-success">Guardar
+      <i class="fas fa-save"></i>
+    </button>
+  </div>
+</form>
+<hr>
+<h4>Info Formulario</h4>
+<span>Estado del Formulario:{{ formUsuario.valid }}</span>
+<br>
+<span>Estado del Formulario:{{ formUsuario.status }}</span>
+<pre>
+  {{ formUsuario.value | json}}
+</pre>
+

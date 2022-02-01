@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h3>Registrar Orden</h3>
+</div>
+
+<div class="row text-end">
+  <div class="col">
+    <button class="btn btn-danger" routerLink="/ordenes">
+      <i class="fas fa-arrow-left"></i>
+      Regresar
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <form (ngSubmit)="guardar( formUser )" #formUser="ngForm" >
+        <div class="form-group mb-3">
+          <label>Id</label>
+          <input
+            type="text"
+            class="form-control"
+            id="_id"
+            name="_id"
+            [(ngModel)]="orden._id"
+            placeholder="Identificador"
+            disabled>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Fecha</label>
+          <input
+            type="Date"
+            class="form-control"
+            id="fechaOrden"
+            name="fechaOrden"
+            [(ngModel)]="orden.date"
+            placeholder="Fecha">
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Nombre Proveedor</label>
+          <input
+            type="text"
+            class="form-control"
+            id="supplier"
+            name="supplier"
+            [(ngModel)]="orden.supplierName"
+            placeholder="Proveedor">
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Nombre de Producto</label>
+          <input
+            type="text"
+            class="form-control"
+            id="productName"
+            name="productName"
+            [(ngModel)]="orden.productName"
+            placeholder="Producto">
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Cantidad</label>
+          <input
+            type="text"
+            class="form-control"
+            id="amount"
+            name="amount"
+            [(ngModel)]="orden.amount"
+            placeholder="Cantidad">
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Costo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cost"
+            name="cost"
+            [(ngModel)]="orden.cost"
+            placeholder="Costo">
+        </div>
+
+        <br>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary w-25">
+            <i class="fas fa-save"></i>
+            Guardar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+

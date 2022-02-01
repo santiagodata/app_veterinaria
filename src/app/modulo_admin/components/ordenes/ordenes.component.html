@@ -1,0 +1,65 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h3>Listado de Ordenes</h3>
+</div>
+
+<div class="row text-end">
+  <div class="col">
+    <button class="btn btn-primary" routerLink="/orden/registrar">
+      <i class="fas fa-user-plus"></i>
+      Agregar
+    </button>
+  </div>
+</div>
+
+<table *ngIf="!cargando && ordenes.length > 0"
+       class="table mt-5">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Fecha</th>
+    <th scope="col">Nombre de Proveedor</th>
+    <th scope="col">Nombre de Producto</th>
+    <th scope="col">Cantidad</th>
+    <th scope="col">Costo</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let orden of ordenes; let i = index">
+    <th scope="row">{{ i + 1}}</th>
+    <td>{{ orden.date }}</td>
+    <td>{{ orden.supplierName }}</td>
+    <td>{{ orden.productName }}</td>
+    <td>{{ orden.amount }}</td>
+    <td>{{ orden.cost }}</td>
+    <td>
+      <button class="btn btn-warning m-2"
+              [routerLink]="['/orden/', orden._id]">
+        <i class="fas fa-user-edit"></i>
+      </button>
+      <button class="btn btn-danger" (click)="eliminar(orden, i)">
+        <i class="fas fa-user-minus"></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div *ngIf="cargando"
+     class="alert alert-info text-center mt-3">
+  <h5>Cargando</h5>
+  <p>
+    <i class="fas fa-spinner fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">Por favor espere...</p>
+</div>
+
+<div *ngIf="!cargando && ordenes.length === 0"
+     class="alert alert-warning text-center mt-3">
+  <h5>No hay registros</h5>
+  <p>
+    <i class="fas fa-exclamation fa-2x"></i>
+  </p>
+
+</div>
+
